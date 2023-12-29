@@ -1,0 +1,48 @@
+body {
+    height: 600px;
+    width: 600px;
+    background-color: gray;
+    position: relative;
+}
+
+#welcome {
+    font-size: 36px;
+    color: blue;
+}
+
+.space-get-information,
+.space-add-information,
+.space-fix-information {
+    display: flex;
+    flex-direction: row;
+    width: 400px;
+    height: 50px;
+}
+
+.space-function {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+}
+
+button {
+    background-color: aqua;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#space-fill-information {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+    width: 300px;
+    background-color: plum;
+    position: absolute;
+    top: 100px;
+    left: 450px;
+}
+
+#btn-submit-student-information, #btn-submit-teacher-information {
+    display: none;
+}
