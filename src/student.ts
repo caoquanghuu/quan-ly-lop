@@ -1,46 +1,30 @@
 import { HumanObject } from "./HumanObjects";
-import { Subject } from "./utils";
+import { Transcript } from "./transcript";
+import { BasicInformation, SubjectTestResult, StudentKeyWord} from "./types";
 
 export class Student extends HumanObject {
-    private hanhkiem : string;
-    public sesmester1 : Subject[] = [];
-    public sesmester2 : Subject[] = [];
+    private _Conduct : string;
+    private _Transcript : Transcript[] = [];
 
-    constructor(){
-        super();
-        this.sesmester1;
-        this.sesmester2;
-    }
-
-    public setSubjectResult(subject : Subject, sesmester : Subject[]) {
-        let subjects = sesmester.map(subject => subject.subjectName);
-        const isSubjectExist = subjects.some(i => i === subject.subjectName);
-        if (isSubjectExist) {
-            console.log('subject already exist');
-            return;
-        }
-        else {
-            let newSubjectResult = subject;
-            sesmester.push(newSubjectResult);
+    getStudent (studentGetKeyWord : StudentKeyWord) {
+        switch (studentGetKeyWord) {
+            case StudentKeyWord.conduct:
+                return this._Conduct;
+            case StudentKeyWord.transcript:
+                return this._Transcript;
         }
         
     }
 
-    public changeHanhKiem(hanhkiem: string) {
-        this.hanhkiem = hanhkiem;
-    }
-
-    public getSubjectResult(subjectName : any, sesmester : Subject[]) {
-        const subJectList = sesmester.map(subject => subject.subjectName);
-        const positionOfSubject = subJectList.findIndex(subjectName);
-        if (positionOfSubject === -1) {
-            console.log('this subject undefine');
-            return;
+    setStudent (studentSetKeyWord : StudentKeyWord, conduct? : string, transcript? : Transcript) {
+        switch (studentSetKeyWord) {
+            case StudentKeyWord.conduct:
+                this._Conduct = conduct;
+                break;
+            case StudentKeyWord.transcript:
+                this._Transcript.push(transcript);
+                break;
+            default:
         }
-        return sesmester[positionOfSubject];
-    }
-
-    public getAllSubjectResult(sesmester: Subject[]) {
-        return sesmester;
     }
 }

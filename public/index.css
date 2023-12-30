@@ -10,7 +10,7 @@ body {
     color: blue;
 }
 
-.space-get-information,
+/* .space-get-information,
 .space-add-information,
 .space-fix-information {
     display: flex;
@@ -31,7 +31,7 @@ button {
     cursor: pointer;
 }
 
-#space-fill-information {
+#space-fill-information, #space-fill-test-result {
     display: none;
     flex-direction: column;
     justify-content: space-between;
@@ -45,4 +45,4 @@ button {
 
 #btn-submit-student-information, #btn-submit-teacher-information {
     display: none;
-}
+} */
