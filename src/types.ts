@@ -30,3 +30,11 @@ export enum TranscriptKeyWord {
     sesmester,
     subjectTestResult
 }
+
+export enum ClassKeyWord {
+    teacherInformation,
+    teacherClass,
+    studentsInformation,
+    studentClass,
+    studentsSubjectResult
+}

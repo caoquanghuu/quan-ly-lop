@@ -1,14 +1,11 @@
 import { HumanObject } from "./HumanObjects";
 import { Student } from "./student";
 import { Transcript } from "./transcript";
-import { HumanObjectKeyWord, StudentKeyWord, TranscriptKeyWord } from "./types";
-
-
-
+import { ClassKeyWord, HumanObjectKeyWord, StudentKeyWord, TranscriptKeyWord } from "./types";
 
 export class Main {
     private _student : Student[] = [];
-    private _teacher : HumanObject[] = [];
+    private _teacher : HumanObject;
 
     private buttonGetAllTeacherInformation  = <HTMLButtonElement>(document.getElementById('btn-get-all-teacher-information'));
     private buttonGetAllStudentInformation = <HTMLButtonElement>(document.getElementById('btn-get-all-student-information'));
@@ -44,9 +41,43 @@ export class Main {
         const student1Transcript1 = new Transcript();
         student1Transcript1.set(TranscriptKeyWord.sesmester, 'sesmester1');
         student1Transcript1.set(TranscriptKeyWord.subjectTestResult, undefined, {subjectName: 'math', test15MinResult1: 8, test15MinResult2: 9, test45MinResult :10, testMiddleSesmester :10, testLastSesmester:10});
+        student1Transcript1.set(TranscriptKeyWord.subjectTestResult, undefined, {subjectName: 'biologic', test15MinResult1: 8, test15MinResult2: 9, test45MinResult :10, testMiddleSesmester :10, testLastSesmester:10});
+        student1Transcript1.set(TranscriptKeyWord.subjectTestResult, undefined, {subjectName: 'history', test15MinResult1: 8, test15MinResult2: 9, test45MinResult :10, testMiddleSesmester :10, testLastSesmester:10});
         student1.setStudent(StudentKeyWord.transcript, undefined, student1Transcript1);
         this._student.push(student1);
-        console.log(this._student);
+        // console.log(this._student);
+
+        const student2 = new Student();
+        student2.set(HumanObjectKeyWord.basicInformation, {name : 'hung',age : 17, sex: 'man', phoneNumber: 123, email: 'hung@gmail.com', role: 'student'});
+        student2.set(HumanObjectKeyWord.inClass, undefined, '10b7');
+        student2.setStudent(StudentKeyWord.conduct, 'bad');
+        const student2Transcript1 = new Transcript();
+        student1Transcript1.set(TranscriptKeyWord.sesmester, 'sesmester1');
+        student1Transcript1.set(TranscriptKeyWord.subjectTestResult, undefined, {subjectName: 'math', test15MinResult1: 8, test15MinResult2: 9, test45MinResult :10, testMiddleSesmester :10, testLastSesmester:10});
+        student1Transcript1.set(TranscriptKeyWord.subjectTestResult, undefined, {subjectName: 'biologic', test15MinResult1: 8, test15MinResult2: 9, test45MinResult :10, testMiddleSesmester :10, testLastSesmester:10});
+        student1Transcript1.set(TranscriptKeyWord.subjectTestResult, undefined, {subjectName: 'history', test15MinResult1: 8, test15MinResult2: 9, test45MinResult :10, testMiddleSesmester :10, testLastSesmester:10});
+        student2.setStudent(StudentKeyWord.transcript, undefined, student1Transcript1);
+        this._student.push(student2);
+        // console.log(this._student);
+
+        this._teacher = new HumanObject();
+        this._teacher.set(HumanObjectKeyWord.basicInformation, {name : 'anh khiet',age : 26, sex: 'man', phoneNumber: 123, email: 'khiet@gmail.com', role: 'teacher'});
+        this._teacher.set(HumanObjectKeyWord.inClass, undefined, '10b7');
+        
+        console.log(this.get(ClassKeyWord.studentsInformation));
+
+    }
+
+    get (classGetKeyWord : ClassKeyWord) {
+        switch (classGetKeyWord) {
+            case ClassKeyWord.teacherInformation:
+                return this._teacher.basicInformation;
+            case ClassKeyWord.teacherClass:
+                return this._teacher._InClass;
+            case ClassKeyWord.studentsInformation:
+                return this._student.forEach(student => student.get(HumanObjectKeyWord.basicInformation));
+
+        }
 
     }
 
