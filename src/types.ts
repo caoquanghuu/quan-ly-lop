@@ -4,8 +4,14 @@ export interface BasicInformation {
     sex: string;
     phoneNumber: number;
     email: string;
-    role: string;
+    job: string;
 }
+
+type RemoveJobField<Type> = {
+    [P in keyof Type as Exclude<P, 'job'>] : Type[P];
+};
+
+export type DisplayableInformation = RemoveJobField<BasicInformation>;
 
 export interface SubjectTestResult {
     subjectName: string;
@@ -16,25 +22,14 @@ export interface SubjectTestResult {
     testLastSesmester: number;
 }
 
-export enum StudentKeyWord {
-    conduct = 'conduct',
-    transcript = 'transcript',
+export enum Subject {
+    Math=  'Math',
+    Phy=   'Phy',
+    Pyo=   'Pyo',
 }
 
-export enum HumanObjectKeyWord {
-    basicInformation,
-    inClass,
-}
 
-export enum TranscriptKeyWord {
-    sesmester,
-    subjectTestResult
-}
+export type SesmesterResult = {
+    [key in Subject]: SubjectTestResult;
+};
 
-export enum ClassKeyWord {
-    teacherInformation,
-    teacherClass,
-    studentsInformation,
-    studentClass,
-    studentsSubjectResult
-}

@@ -1,84 +1,182 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <title>quan ly danh sach hoc sinh</title>
     <link rel="stylesheet" href="./index.css" />
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
     <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
 
-        .input {
-            background-color: #f5f5f5;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            padding: 8px;
-            margin-bottom: 8px;
-            width: 200px;
-        }
+      .input {
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 8px;
+        margin-bottom: 8px;
+        width: 200px;
+      }
 
-        .vintage-style {
-            background-color: #f8f1e7;
-            color: #6c757d;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 16px;
-            line-height: 1.5;
-        }
+      .vintage-style {
+        background-color: #f8f1e7;
+        color: #6c757d;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 16px;
+        line-height: 1.5;
+      }
 
-        .btn {
-            background-color: #f8f1e7;
-            color: #6c757d;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 16px;
-            line-height: 1.5;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            padding: 8px;
-            margin: 2px;
-            width: 200px;
-        }
+      .btn {
+        background-color: #f8f1e7;
+        color: #6c757d;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 16px;
+        line-height: 1.5;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 8px;
+        margin: 2px;
+        width: 200px;
+      }
     </style>
     <script src="bundle.js"></script>
-</head>
+  </head>
 
-<body class="bg-gray-100">
-    <div id="welcome" class="text-center text-2xl font-bold mt-8">Welcome to the page! What do you want to do?</div>
+  <body class="bg-gray-100">
+    <div id="welcome" class="text-center text-2xl font-bold mt-8">
+      Welcome to the page! What do you want to do?
+    </div>
     <div class="space-function flex justify-center mt-8">
-        <div class="space-get-information">
-            <button id="btn-get-all-teacher-information" class="btn">Get all teacher information</button>
-            <button id="btn-get-all-student-test-result" class="btn">Get all student test result</button>
-            <button id="btn-get-all-student-information" class="btn">Get all student information</button>
-            <button id="btn-get-a-student-test-result" class="btn">Get a student test result</button>
-        </div>
-        <div class="space-add-information ml-8">
-            <button id="btn-add-teacher-information" class="btn">Add a teacher information</button>
-            <button id="btn-add-student-information" class="btn">Add a student information</button>
-            <button id="btn-add-student-test-result" class="btn">Add a student test result</button>
-        </div>
-        <div class="space-fix-information ml-8">
-            <button id="btn-fix--student-conduct" class="btn">Fix a student conduct</button>
-            <button id="btn-fix-teacher-class" class="btn">Fix a teacher class</button>
-            <button id="btn-fix-student-class" class="btn">Fix a student class</button>
-        </div>
+      <div class="space-get-information">
+        <button id="btn-get-all-teacher-information" class="btn">
+          Get all teacher information
+        </button>
+        <button id="btn-get-all-student-test-result" class="btn">
+          Get all student test result
+        </button>
+        <button id="btn-get-all-student-information" class="btn">
+          Get all student information
+        </button>
+        <button id="btn-get-a-student-test-result" class="btn">
+          Get a student test result
+        </button>
+      </div>
+      <div class="space-add-information ml-8">
+        <button id="btn-add-teacher-information" class="btn">
+          Add a teacher information
+        </button>
+        <button id="btn-add-student-information" class="btn">
+          Add a student information
+        </button>
+        <button id="btn-add-student-test-result" class="btn">
+          Add a student test result
+        </button>
+      </div>
+      <div class="space-fix-information ml-8">
+        <button id="btn-fix--student-conduct" class="btn">
+          Fix a student conduct
+        </button>
+        <button id="btn-fix-teacher-class" class="btn">
+          Fix a teacher class
+        </button>
+        <button id="btn-fix-student-class" class="btn">
+          Fix a student class
+        </button>
+      </div>
     </div>
     <div id="form-fill-information" class="flex flex-col justify-center mt-8">
-        <input id="name" type="name" placeholder="Name" class="input vintage-style" />
-        <input id="age" type="number" placeholder="Age" class="input vintage-style" />
-        <input id="sex" type="sex" placeholder="Sex" class="input vintage-style" />
-        <input id="phone-number" type="number" placeholder="Phone number" class="input vintage-style" />
-        <input id="email" type="email" placeholder="Email" class="input vintage-style" />
-        <input id="in-class" type="class" placeholder="Class" class="input vintage-style" />
-        <button id="btn-submit-student-information" class="btn">Submit teacher information</button>
-        <button id="btn-submit-teacher-information" class="btn">Submit student information</button>
+      <input
+        id="input-name"
+        type="name"
+        placeholder="Name"
+        class="input vintage-style"
+      />
+      <input
+        id="input-age"
+        type="number"
+        placeholder="Age"
+        class="input vintage-style"
+      />
+      <input
+        id="input-sex"
+        type="sex"
+        placeholder="Sex"
+        class="input vintage-style"
+      />
+      <input
+        id="input-phone-number"
+        type="number"
+        placeholder="Phone number"
+        class="input vintage-style"
+      />
+      <input
+        id="input-email"
+        type="email"
+        placeholder="Email"
+        class="input vintage-style"
+      />
+      <input
+        id="input-job"
+        type="job"
+        placeholder="Job"
+        class="input vintage-style"
+      />
+      <button id="btn-submit-student-information" class="btn">
+        Submit teacher information
+      </button>
+      <button id="btn-submit-teacher-information" class="btn">
+        Submit student information
+      </button>
+    </div>
+    <div id="form-fill-information" class="flex flex-col justify-center mt-8">
+      <input
+        id="input-subject-name"
+        type="subject name"
+        placeholder="subject name"
+        class="input vintage-style"
+      />
+      <input
+        id="input-15-min-1"
+        type="number"
+        placeholder="15min test 1"
+        class="input vintage-style"
+      />
+      <input
+        id="input-15-min-2"
+        type="number"
+        placeholder="15min test 2"
+        class="input vintage-style"
+      />
+      <input
+        id="input-45-min"
+        type="number"
+        placeholder="45 min test"
+        class="input vintage-style"
+      />
+      <input
+        id="input-middle-test"
+        type="number"
+        placeholder="middle test"
+        class="input vintage-style"
+      />
+      <input
+        id="input-last-test"
+        type="number"
+        placeholder="last test"
+        class="input vintage-style"
+      />
+      <button id="btn-submit-test-result" class="btn">
+        Submit test result
+      </button>
     </div>
     <div id="space-show-result" class="mt-8"></div>
-</body>
-
+  </body>
 </html>

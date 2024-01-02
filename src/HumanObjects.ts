@@ -1,29 +1,20 @@
-import { BasicInformation, HumanObjectKeyWord } from "./types";
+import { BasicInformation, DisplayableInformation} from "./types";
 
 
 export class HumanObject {
-    public basicInformation: BasicInformation;
+    private _basicInformation: BasicInformation;
     public _InClass: string;
 
-    get (humanObjectGetKeyword : HumanObjectKeyWord) {
-        switch (humanObjectGetKeyword) {
-            case HumanObjectKeyWord.basicInformation: 
-                return this.basicInformation;
-            case HumanObjectKeyWord.inClass:
-                return this._InClass;
-            default:
-        }
+    get displayableInformation() {
+        const displayableInformation : DisplayableInformation = this._basicInformation;
+        return displayableInformation;
     }
 
-    set (humanObjectSetKeyword : HumanObjectKeyWord, basicInformation? : BasicInformation, inClass? : string) {
-        switch (humanObjectSetKeyword) {
-            case HumanObjectKeyWord.basicInformation:
-                this.basicInformation = basicInformation;
-                break;
-            case HumanObjectKeyWord.inClass:
-                this._InClass = inClass;
-                break;
-            default:
-        }
+    get name(){
+        return this._basicInformation.name;
+    }
+
+    public set basicInformation(info: BasicInformation) {
+        this._basicInformation = { ... info };
     }
 }
