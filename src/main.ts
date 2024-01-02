@@ -14,6 +14,8 @@ export class Main {
     private buttonGetAllTeacherInformation = getElement('btn-get-all-teacher-information'); 
     private buttonGetAllStudentTestResult = getElement('btn-get-all-student-test-result');
 
+    private spaceShowResult = getElement('space-show-result');
+
     private buttonSubmitTeacherInformation = getElement('btn-submit-teacher-information');
     private buttonSubmitStudentInformation = getElement('btn-submit-student-information');
 
@@ -46,8 +48,6 @@ export class Main {
 
     private buttonSubmitTestResult = getElement('btn-submit-test-result');
 
-    private spaceShowResult = getElement('space-show-result');
-
     private inputStudentNameConductChange = getElement('input-student-name-conduct-change');
     private inputNewConduct = getElement('input-new-conduct');
     private buttonSubmitNewConduct = getElement('btn-submit-new-conduct');
@@ -73,7 +73,6 @@ export class Main {
         
         this.buttonGetAllStudentInformation.addEventListener('mouseup', () => this.getAllHumanInformation(this._student));
         this.buttonGetAllTeacherInformation.addEventListener('mouseup', () => this.getAllHumanInformation(this._teacher));
-
         this.buttonGetAllStudentTestResult.addEventListener('mouseup', this.getAllStudentTestResult.bind(this));
         
         this.buttonSubmitStudentInformation.addEventListener('mouseup', () => this.addHumanInfoFromInput(this._student));
@@ -82,7 +81,6 @@ export class Main {
         this.buttonSubmitTestResult.addEventListener('mouseup', this.addTestResult.bind(this));
 
         this.buttonSubmitNewConduct.addEventListener('mouseup', this.fixStudentConduct.bind(this));
-
     }
 
     getAllHumanInformation(humanObjects : HumanObject[]) {
@@ -102,11 +100,13 @@ export class Main {
     getAllStudentTestResult() {    
         const studentListName = this._student.map(student => student.name);
         const studentListTestResult = this._student.map(student => student.transcript);
+
         this.displayTestResult(studentListName, studentListTestResult);
     }
 
     displayTestResult(listName: string[], listResult : SesmesterResult[][]) {
         const L = listName.length;
+
         for (let i = 0; i < L ; i++) {
             const node = document.createElement('li');
             const textNode1 = document.createTextNode(listName[i]);
@@ -128,18 +128,20 @@ export class Main {
     addHumanInfoFromInput(humanObjects: HumanObject[]) {
         const newHumanInformation : BasicInformation = {name : this.inputName.value, age : parseInt(this.inputAge.value), sex : this.inputSex.value , phoneNumber : parseInt(this.inputPhoneNumber.value), email : this.inputEmail.value, job : this.inputJob.value};
         let newHumanOject = new HumanObject();
+
         newHumanOject.basicInformation = newHumanInformation;
         humanObjects.push(newHumanOject);
-        console.log(humanObjects);
     }
 
     addTestResult() {
         const name = this.inputStudentName.value;
         const P = this._student.findIndex(student => student.name === name);
+
         if (P === -1) {
             console.log('student not exist')
             return
         };
+
         const newSesmester : SesmesterResult = {
             Math : {subjectName : 'math',
                 test15MinResult1 : parseInt(this.inputMath15Min1.value), 
@@ -167,9 +169,10 @@ export class Main {
     fixStudentConduct() {
         const inputName = this.inputStudentNameConductChange.value;
         const P = this._student.findIndex(student => student.name === inputName);
+
         if (P === -1) return;
+
         this._student[P].conduct = this.inputNewConduct.value;
-        console.log(this._student[P].conduct);
     }
 }
     
