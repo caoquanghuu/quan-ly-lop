@@ -3,7 +3,7 @@ import {SesmesterResult} from "./types";
 
 export class Student extends HumanObject {
     private _Conduct : string;
-    private _Sesmester: SesmesterResult[] = [];
+    public _Sesmester: SesmesterResult[] = [];
 
     get transcript () {
         return this._Sesmester;

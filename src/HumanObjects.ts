@@ -3,7 +3,6 @@ import { BasicInformation, DisplayableInformation} from "./types";
 
 export class HumanObject {
     private _basicInformation: BasicInformation;
-    public _InClass: string;
 
     get displayableInformation() {
         const displayableInformation : DisplayableInformation = this._basicInformation;

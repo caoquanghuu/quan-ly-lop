@@ -13,8 +13,6 @@ export class Main {
     private buttonGetAllStudentInformation = getElement('btn-get-all-student-information'); 
     private buttonGetAllTeacherInformation = getElement('btn-get-all-teacher-information'); 
     private buttonGetAllStudentTestResult = getElement('btn-get-all-student-test-result');
-    private buttonAddTeacherInformation = getElement('btn-add-teacher-information');
-    private buttonAddStudentInformation = getElement('btn-add-student-information');
 
     private buttonSubmitTeacherInformation = getElement('btn-submit-teacher-information');
     private buttonSubmitStudentInformation = getElement('btn-submit-student-information');
@@ -26,19 +24,47 @@ export class Main {
     private inputEmail = getElement('input-email');
     private inputJob = getElement('input-job');
 
+    private inputStudentName = getElement('input-student-name');
+
+    private inputMath15Min1 = getElement('math-input-15-min-1');
+    private inputMath15min2 = getElement('math-input-15-min-2');
+    private inputMath45min = getElement('math-input-45-min');
+    private inputMathMiddle = getElement('math-input-middle-test');
+    private inputMathLast = getElement('math-input-last-test');
+
+    private inputPhy15Min1 = getElement('phy-input-15-min-1');
+    private inputPhy15min2 = getElement('phy-input-15-min-2');
+    private inputPhy45min = getElement('phy-input-45-min');
+    private inputPhyMiddle = getElement('phy-input-middle-test');
+    private inputPhyLast = getElement('phy-input-last-test');
+
+    private inputPyo15Min1 = getElement('pyo-input-15-min-1');
+    private inputPyo15min2 = getElement('pyo-input-15-min-2');
+    private inputPyo45min = getElement('pyo-input-45-min');
+    private inputPyoMiddle = getElement('pyo-input-middle-test');
+    private inputPyoLast = getElement('pyo-input-last-test');
+
+    private buttonSubmitTestResult = getElement('btn-submit-test-result');
+
     private spaceShowResult = getElement('space-show-result');
+
+    private inputStudentNameConductChange = getElement('input-student-name-conduct-change');
+    private inputNewConduct = getElement('input-new-conduct');
+    private buttonSubmitNewConduct = getElement('btn-submit-new-conduct');
 
     constructor() {
         const student1 = new Student();
         student1.basicInformation = mockDataInformation[0];
         student1.sesmester = mockDataTestResult[0];
         student1.sesmester = mockDataTestResult[1];
+        student1.conduct = 'good';
         this._student.push(student1);
 
         const student2 = new Student();
         student2.basicInformation = mockDataInformation[1];
         student2.sesmester = mockDataTestResult[0];
         student2.sesmester = mockDataTestResult[1];
+        student2.conduct = 'bad';
         this._student.push(student2);
 
         const teacher1 = new HumanObject();
@@ -51,15 +77,20 @@ export class Main {
         this.buttonGetAllStudentTestResult.addEventListener('mouseup', this.getAllStudentTestResult.bind(this));
         
         this.buttonSubmitStudentInformation.addEventListener('mouseup', () => this.addHumanInfoFromInput(this._student));
-        this.buttonSubmitTeacherInformation.addEventListener('mouseup', () => this.addHumanInfoFromInput(this._teacher))
+        this.buttonSubmitTeacherInformation.addEventListener('mouseup', () => this.addHumanInfoFromInput(this._teacher));
+
+        this.buttonSubmitTestResult.addEventListener('mouseup', this.addTestResult.bind(this));
+
+        this.buttonSubmitNewConduct.addEventListener('mouseup', this.fixStudentConduct.bind(this));
+
     }
 
     getAllHumanInformation(humanObjects : HumanObject[]) {
         const humanInfoList = humanObjects.map(student => student.displayableInformation);
-        this.displayResult(humanInfoList);
+        this.displayInformationResult(humanInfoList);
     }
     
-    displayResult(basicInformationList : DisplayableInformation[])  {
+    displayInformationResult(basicInformationList : DisplayableInformation[])  {
         basicInformationList.forEach(information => {
             const node = document.createElement('li');
             const textNode = document.createTextNode(`${information.name} ${information.age} ${information.sex} ${information.phoneNumber} ${information.email}`);
@@ -102,6 +133,44 @@ export class Main {
         console.log(humanObjects);
     }
 
+    addTestResult() {
+        const name = this.inputStudentName.value;
+        const P = this._student.findIndex(student => student.name === name);
+        if (P === -1) {
+            console.log('student not exist')
+            return
+        };
+        const newSesmester : SesmesterResult = {
+            Math : {subjectName : 'math',
+                test15MinResult1 : parseInt(this.inputMath15Min1.value), 
+                test15MinResult2 : parseInt(this.inputMath15min2.value), 
+                test45MinResult : parseInt(this.inputMath45min.value), 
+                testMiddleSesmester : parseInt(this.inputMathMiddle.value), 
+                testLastSesmester : parseInt(this.inputMathLast.value)},
+            Phy : {subjectName : 'phy', 
+                test15MinResult1 : parseInt(this.inputPhy15Min1.value), 
+                test15MinResult2 : parseInt(this.inputPhy15min2.value), 
+                test45MinResult : parseInt(this.inputPhy45min.value), 
+                testMiddleSesmester : parseInt(this.inputPhyMiddle.value), 
+                testLastSesmester : parseInt(this.inputPhyLast.value)},
+            Pyo : {subjectName : 'pyo', 
+                test15MinResult1 : parseInt(this.inputPyo15Min1.value),
+                test15MinResult2 : parseInt(this.inputPyo15min2.value), 
+                test45MinResult : parseInt(this.inputPyo45min.value), 
+                testMiddleSesmester : parseInt(this.inputPyoMiddle.value), 
+                testLastSesmester : parseInt(this.inputPyoLast.value)}};
+
+        this._student[P]._Sesmester.push(newSesmester);
+    }
+
+
+    fixStudentConduct() {
+        const inputName = this.inputStudentNameConductChange.value;
+        const P = this._student.findIndex(student => student.name === inputName);
+        if (P === -1) return;
+        this._student[P].conduct = this.inputNewConduct.value;
+        console.log(this._student[P].conduct);
+    }
 }
     
 

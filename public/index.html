@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <title>quan ly danh sach hoc sinh</title>
-    <link rel="stylesheet" href="./index.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="./index.css" />
     <style>
       body {
         display: flex;
@@ -65,31 +65,6 @@
         <button id="btn-get-all-student-information" class="btn">
           Get all student information
         </button>
-        <button id="btn-get-a-student-test-result" class="btn">
-          Get a student test result
-        </button>
-      </div>
-      <div class="space-add-information ml-8">
-        <button id="btn-add-teacher-information" class="btn">
-          Add a teacher information
-        </button>
-        <button id="btn-add-student-information" class="btn">
-          Add a student information
-        </button>
-        <button id="btn-add-student-test-result" class="btn">
-          Add a student test result
-        </button>
-      </div>
-      <div class="space-fix-information ml-8">
-        <button id="btn-fix--student-conduct" class="btn">
-          Fix a student conduct
-        </button>
-        <button id="btn-fix-teacher-class" class="btn">
-          Fix a teacher class
-        </button>
-        <button id="btn-fix-student-class" class="btn">
-          Fix a student class
-        </button>
       </div>
     </div>
     <div id="form-fill-information" class="flex flex-col justify-center mt-8">
@@ -136,45 +111,150 @@
         Submit student information
       </button>
     </div>
-    <div id="form-fill-information" class="flex flex-col justify-center mt-8">
+    <div id="space-fill-test-result">
+      <div>Add a student test result</div>
       <input
-        id="input-subject-name"
-        type="subject name"
-        placeholder="subject name"
+        id="input-student-name"
+        class="input vintage-style"
+        type="name"
+        placeholder="student name"
+      />
+      <div id="fill-input">
+        <div id="space-fill-math-result">
+          <div>Math</div>
+          <div
+            id="form-fill-information"
+            class="flex flex-col justify-center mt-8"
+          >
+            <input
+              id="math-input-15-min-1"
+              type="number"
+              placeholder="15min test 1"
+              class="input vintage-style"
+            />
+            <input
+              id="math-input-15-min-2"
+              type="number"
+              placeholder="15min test 2"
+              class="input vintage-style"
+            />
+            <input
+              id="math-input-45-min"
+              type="number"
+              placeholder="45 min test"
+              class="input vintage-style"
+            />
+            <input
+              id="math-input-middle-test"
+              type="number"
+              placeholder="middle test"
+              class="input vintage-style"
+            />
+            <input
+              id="math-input-last-test"
+              type="number"
+              placeholder="last test"
+              class="input vintage-style"
+            />
+          </div>
+        </div>
+        <div id="space-fill-math-result">
+          <div>Phy</div>
+          <div
+            id="form-fill-information"
+            class="flex flex-col justify-center mt-8"
+          >
+            <input
+              id="phy-input-15-min-1"
+              type="number"
+              placeholder="15min test 1"
+              class="input vintage-style"
+            />
+            <input
+              id="phy-input-15-min-2"
+              type="number"
+              placeholder="15min test 2"
+              class="input vintage-style"
+            />
+            <input
+              id="phy-input-45-min"
+              type="number"
+              placeholder="45 min test"
+              class="input vintage-style"
+            />
+            <input
+              id="phy-input-middle-test"
+              type="number"
+              placeholder="middle test"
+              class="input vintage-style"
+            />
+            <input
+              id="phy-input-last-test"
+              type="number"
+              placeholder="last test"
+              class="input vintage-style"
+            />
+            <button id="btn-submit-test-result" class="btn">
+              Submit test result
+            </button>
+          </div>
+        </div>
+        <div id="space-fill-math-result">
+          <div>Pyo</div>
+          <div
+            id="pyo-form-fill-information"
+            class="flex flex-col justify-center mt-8"
+          >
+            <input
+              id="pyo-input-15-min-1"
+              type="number"
+              placeholder="15min test 1"
+              class="input vintage-style"
+            />
+            <input
+              id="pyo-input-15-min-2"
+              type="number"
+              placeholder="15min test 2"
+              class="input vintage-style"
+            />
+            <input
+              id="pyo-input-45-min"
+              type="number"
+              placeholder="45 min test"
+              class="input vintage-style"
+            />
+            <input
+              id="pyo-input-middle-test"
+              type="number"
+              placeholder="middle test"
+              class="input vintage-style"
+            />
+            <input
+              id="pyo-input-last-test"
+              type="number"
+              placeholder="last test"
+              class="input vintage-style"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="space-fix-conduct">
+      <div>Fix a student conduct</div>
+      <input
+        id="input-student-name-conduct-change"
+        type="name"
+        placeholder="name of student"
         class="input vintage-style"
       />
       <input
-        id="input-15-min-1"
-        type="number"
-        placeholder="15min test 1"
+        id="input-new-conduct"
+        type="conduct"
+        placeholder="new conduct"
         class="input vintage-style"
       />
-      <input
-        id="input-15-min-2"
-        type="number"
-        placeholder="15min test 2"
-        class="input vintage-style"
-      />
-      <input
-        id="input-45-min"
-        type="number"
-        placeholder="45 min test"
-        class="input vintage-style"
-      />
-      <input
-        id="input-middle-test"
-        type="number"
-        placeholder="middle test"
-        class="input vintage-style"
-      />
-      <input
-        id="input-last-test"
-        type="number"
-        placeholder="last test"
-        class="input vintage-style"
-      />
-      <button id="btn-submit-test-result" class="btn">
-        Submit test result
+      <button id="btn-submit-new-conduct" class="btn">
+        submit new conduct
       </button>
     </div>
     <div id="space-show-result" class="mt-8"></div>

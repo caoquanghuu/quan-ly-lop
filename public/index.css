@@ -1,6 +1,4 @@
 body {
-    height: 600px;
-    width: 600px;
     background-color: gray;
     position: relative;
 }
@@ -8,6 +6,28 @@ body {
 #welcome {
     font-size: 36px;
     color: blue;
+}
+
+
+#space-fill-test-result {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+}
+
+#fill-input {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#space-fix-conduct {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 60px;
 }
 
 /* .space-get-information,
@@ -29,11 +49,11 @@ button {
     background-color: aqua;
     border-radius: 10px;
     cursor: pointer;
-} */
+}
 
-/* #space-fill-information,
+
+#space-fill-information,
 #space-fill-test-result {
-    display: none;
     flex-direction: column;
     justify-content: space-between;
     height: 200px;
@@ -42,9 +62,7 @@ button {
     position: absolute;
     top: 100px;
     left: 450px;
-} */
+}
 
-/* #btn-submit-student-information,
-#btn-submit-teacher-information {
-    display: none;
-} */
+#btn-submit-student-information,
+#btn-submit-teacher-information {} */
