@@ -1,4 +1,4 @@
-import { HumanObject } from "./humanObjects";
+import { HumanObject } from "./humanObject";
 import {SesmesterResult} from "./types";
 
 export class Student extends HumanObject {

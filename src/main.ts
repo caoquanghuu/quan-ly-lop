@@ -1,4 +1,4 @@
-import { HumanObject } from "./humanObjects";
+import { HumanObject } from "./humanObject";
 import { mockDataInformation, mockDataTestResult } from "./mockData";
 import { Student } from "./student";
 import { BasicInformation, DisplayableInformation, SesmesterResult } from "./types";
